@@ -25,12 +25,16 @@ pipeline {
                 }
           }
            steps {
+               script{
                maven_build()
                
            }
        }
+       }
       stage('SonarStage'){
+          script{
          sonar_analyse()
    }
+      }
 }
 }
