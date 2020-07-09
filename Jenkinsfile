@@ -32,9 +32,12 @@ pipeline {
        }
        }
       stage('SonarStage'){
-          script{
+         steps{
+         
+        script{
          sonar_analyse()
    }
+      }
       }
 }
 }
