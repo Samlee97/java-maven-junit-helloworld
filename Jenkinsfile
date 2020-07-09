@@ -33,3 +33,4 @@ pipeline {
          sonar_analyse()
    }
 }
+}
