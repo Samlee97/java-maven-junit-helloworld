@@ -2,12 +2,7 @@
 
 pipeline {
 
-   agent {
-       node {
-           label 'master'
-       }
-   }
-
+   agent any
    tools {
        maven 'Maven_Home'
    }
@@ -23,11 +18,19 @@ pipeline {
            }
        }
 
-       stage("Compile Code") {
+       stage("Build_In_Container") {
+          agent {
+                docker {
+                    image 'samlee18/samlee'
+                   reuseNode true
+                }
+          }
            steps {
-               Build(
-               sh 'mvn clean install'
+               build()
+               
            }
        }
+      stage('SonarStage'){
+         sonar()
    }
 }
