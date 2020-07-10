@@ -39,5 +39,10 @@ pipeline {
    }
       
       }
+      stage('QualityGate'){
+         steps{
+            sonar_quality_gate()
+         }
+      }
 }
 }
