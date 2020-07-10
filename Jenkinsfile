@@ -11,10 +11,10 @@ pipeline {
 
        stage("Code Checkout") {
            steps {
-               script{
-               abcd("master", "https://github.com/Samlee97/java-maven-junit-helloworld.git" )
+               
+               gitCheckout("master", "https://github.com/Samlee97/java-maven-junit-helloworld.git" )
                }
-           }
+           
        }
 
        stage("Build_In_Container") {
@@ -25,19 +25,19 @@ pipeline {
                 }
           }
            steps {
-               script{
+               
                maven_build()
                
            }
-       }
+       
        }
       stage('SonarStage'){
          steps{
          
-        script{
+        
          sonar_analyse()
    }
-      }
+      
       }
 }
 }
